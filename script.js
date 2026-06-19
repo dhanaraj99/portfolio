@@ -6,6 +6,7 @@ const EXPLOREX_DEPLOY_URL = "";
 const SYNCLEARN_DEPLOY_URL = "";
 
 document.addEventListener("DOMContentLoaded", () => {
+  initModalBackdropClicks();
   initThemeSwitcher();
   initScrollHandlers();
   initBackgroundCanvas();
@@ -850,6 +851,8 @@ window.nextSyncLearnQuestion = nextSyncLearnQuestion;
 window.resetSyncLearnDemo = resetSyncLearnDemo;
 window.challengeDuel = challengeDuel;
 window.sendTeacherNotification = sendTeacherNotification;
+window.openDemoModal = openDemoModal;
+window.closeDemoModal = closeDemoModal;
 
 function openDemoModal(projectKey) {
   const modal = document.getElementById("demo-modal");
@@ -1240,6 +1243,33 @@ function openDemoModal(projectKey) {
       </div>
     `;
     loadSyncLearnQuestion(0);
+  }
+}
+
+function closeDemoModal() {
+  const modal = document.getElementById("demo-modal");
+  if (modal) {
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+}
+
+function initModalBackdropClicks() {
+  const demoModal = document.getElementById("demo-modal");
+  if (demoModal) {
+    demoModal.addEventListener("click", (e) => {
+      if (e.target === demoModal) {
+        closeDemoModal();
+      }
+    });
+  }
+  const resumeModal = document.getElementById("resume-modal");
+  if (resumeModal) {
+    resumeModal.addEventListener("click", (e) => {
+      if (e.target === resumeModal) {
+        closeResumeModal();
+      }
+    });
   }
 }
 
