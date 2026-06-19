@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhanaraj D | Full Stack Developer | Portfolio</title>
+  <meta name="description" content="Professional Portfolio of Dhanaraj D, Full Stack Developer. Specializing in Java, Spring Boot, React.js, and Node.js. View projects, certifications, and download resume.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=2.9.0">
+</head>
+<body>
+  
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Background Canvas Particle Network -->
+  <canvas id="canvas-background"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">Dhanaraj <span>D</span></a>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certificates</a>
+        <a href="#contact" class="nav-btn-contact">Contact</a>
+      </nav>
+      <!-- Nav right group: always stays on the right -->
+      <div class="nav-right">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+          <svg class="sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button class="nav-resume-btn" onclick="openResumeModal()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Resume
+        </button>
+        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <nav class="drawer-links">
+      <a href="#home" onclick="toggleMobileMenu()">Home</a>
+      <a href="#about" onclick="toggleMobileMenu()">About</a>
+      <a href="#experience" onclick="toggleMobileMenu()">Experience</a>
+      <a href="#projects" onclick="toggleMobileMenu()">Projects</a>
+      <a href="#skills" onclick="toggleMobileMenu()">Skills</a>
+      <a href="#certifications" onclick="toggleMobileMenu()">Certificates</a>
+      <a href="#contact" onclick="toggleMobileMenu()">Contact Me</a>
+      
+      <!-- Mobile Theme Toggle -->
+      <button class="drawer-theme-toggle-btn" id="mobile-theme-toggle" aria-label="Toggle Theme">
+        <svg class="sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <span class="theme-toggle-label">Toggle Theme</span>
+      </button>
+
+      <button class="drawer-resume-btn" onclick="openResumeModal(); toggleMobileMenu();">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline></svg>
+        Download Resume
+      </button>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="section-container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">⚡ Available for Full Stack Opportunities</div>
+        <h1 class="hero-title">
+          Hi, I'm <span class="name-highlight">Dhanaraj D</span>
+        </h1>
+        <div class="role-typewriter">
+          <span class="role-text" id="role-text"></span><span class="type-cursor">|</span>
+        </div>
+        <p class="hero-subtitle">
+          A passionate developer skilled in crafting scalable web applications using Java, Spring Boot, React.js, and Node.js. With hands-on experience in end-to-end development, REST API design, and database architecture, I bring ideas to life with clean code and intuitive user experiences.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">Browse Projects</a>
+          <button class="btn btn-outline" onclick="openResumeModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            View My Resume
+          </button>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com/dhanaraj99" target="_blank" title="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/dhanaraj-dhammure/" target="_blank" title="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <a href="mailto:dhanarajdhammure99@gmail.com" title="Email Dhanaraj">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </a>
+          <a href="tel:+917892739895" title="Call Dhanaraj">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-image-wrapper">
+        <div class="radar-glow ring-1"></div>
+        <div class="radar-glow ring-2"></div>
+        <div class="hero-image-container">
+          <img src="avatar.png" alt="Dhanaraj D" class="hero-avatar">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Quick stats strip -->
+    <div class="stats-strip">
+      <div class="section-container stats-grid">
+        <div class="stat-item glow-hover">
+          <div class="stat-icon-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <h3>2+</h3>
+          <p>Major Projects</p>
+        </div>
+        <div class="stat-item glow-hover">
+          <div class="stat-icon-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline><line x1="14" y1="4" x2="10" y2="20"></line></svg>
+          </div>
+          <h3>Java Full Stack</h3>
+          <p>Core Expertise</p>
+        </div>
+        <div class="stat-item glow-hover">
+          <div class="stat-icon-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg>
+          </div>
+          <h3>10+</h3>
+          <p>Technologies</p>
+        </div>
+        <div class="stat-item glow-hover">
+          <div class="stat-icon-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </div>
+          <h3>Gowri Soft</h3>
+          <p>Frontend Intern</p>
+        </div>
+        <div class="stat-item glow-hover">
+          <div class="stat-icon-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          </div>
+          <h3>3+</h3>
+          <p>Certifications</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section scroll-reveal">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="sub-title">About Me</span>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-text-content">
+          <p>
+            I'm a <strong>Full Stack Developer</strong> currently pursuing my <strong>B.Tech in Information Science &amp; Engineering</strong> at Presidency University, Bangalore. I specialize in building scalable web applications with clean architecture and seamless user experiences.
+          </p>
+          <p>
+            With hands-on internship experience at <strong>Gowri Software Solutions</strong>, I've honed my skills in frontend optimization, cross-browser compatibility, and collaborative agile workflows. I thrive on turning complex problems into elegant, maintainable solutions.
+          </p>
+          
+          <h3 class="inner-heading">What I Bring to the Table</h3>
+          <div class="competency-grid">
+            <div class="competency-item stagger-fade" style="--stagger: 0">
+              <span class="competency-icon">⚙️</span>
+              <span>Java &amp; OOP Architecture</span>
+            </div>
+            <div class="competency-item stagger-fade" style="--stagger: 1">
+              <span class="competency-icon">🔗</span>
+              <span>REST API Development</span>
+            </div>
+            <div class="competency-item stagger-fade" style="--stagger: 2">
+              <span class="competency-icon">🎨</span>
+              <span>Responsive UI Design</span>
+            </div>
+            <div class="competency-item stagger-fade" style="--stagger: 3">
+              <span class="competency-icon">🛡️</span>
+              <span>Spring Security &amp; Auth</span>
+            </div>
+            <div class="competency-item stagger-fade" style="--stagger: 4">
+              <span class="competency-icon">🗄️</span>
+              <span>Database Design &amp; SQL</span>
+            </div>
+            <div class="competency-item stagger-fade" style="--stagger: 5">
+              <span class="competency-icon">🚀</span>
+              <span>Git, Docker &amp; Deployment</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-education-card glow-hover">
+          <h3 class="card-title">🎓 Education</h3>
+          <div class="edu-timeline">
+            
+            <div class="edu-item stagger-fade" style="--stagger: 0">
+              <div class="edu-marker"></div>
+              <div class="edu-details">
+                <span class="edu-date">2022 – 2026</span>
+                <h4>B.Tech — Information Science &amp; Eng.</h4>
+                <p class="edu-school">Presidency University, Bangalore</p>
+                <span class="edu-grade-tag">CGPA: 7.52</span>
+              </div>
+            </div>
+            
+            <div class="edu-item stagger-fade" style="--stagger: 1">
+              <div class="edu-marker"></div>
+              <div class="edu-details">
+                <span class="edu-date">2019 – 2021</span>
+                <h4>Higher Secondary — Science (PCMB)</h4>
+                <p class="edu-school">SBR PU College, Gulbarga</p>
+                <span class="edu-grade-tag">83.66%</span>
+              </div>
+            </div>
+
+            <div class="edu-item stagger-fade" style="--stagger: 2">
+              <div class="edu-marker"></div>
+              <div class="edu-details">
+                <span class="edu-date">2018 – 2019</span>
+                <h4>Secondary School — SSLC</h4>
+                <p class="edu-school">SBR Residential Public School</p>
+                <span class="edu-grade-tag">91.68%</span>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Timeline -->
+  <section id="experience" class="experience-section scroll-reveal">
+    <!-- Floating background elements -->
+    <div class="exp-bg-elements">
+      <div class="floating-shape shape-1">&lt;/&gt;</div>
+      <div class="floating-shape shape-2">{ }</div>
+      <div class="floating-shape shape-3">java</div>
+      <div class="floating-shape shape-4">js</div>
+      <div class="floating-shape shape-5">[]</div>
+    </div>
+
+    <div class="section-container" style="position: relative; z-index: 1;">
+      <div class="section-header">
+        <span class="sub-title">Internship</span>
+        <h2 class="section-title">Professional Experience</h2>
+      </div>
+      
+      <div class="timeline-container">
+        <div class="timeline-node stagger-fade" style="--stagger: 0">
+          <div class="node-date">Sep 2024 – Oct 2024</div>
+          <div class="node-content glow-hover">
+            <span class="node-tag">Internship</span>
+            <h3 class="node-title">Frontend Development Intern</h3>
+            <h4 class="node-company">
+              <div class="company-logo-placeholder">G</div>
+              <a href="https://gowrisoft.com" target="_blank" class="redirect-link">Gowri Software Solutions Pvt. Ltd. | Bangalore <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </h4>
+            <ul class="node-bullets">
+              <li>Designed, improved, and optimized responsive web interfaces using HTML, CSS, and JavaScript.</li>
+              <li>Improved UI layout performance and ensured seamless cross-browser compatibility.</li>
+              <li>Recognized by team leads for exceptional attention to detail, proactive problem-solving, and timely task execution.</li>
+            </ul>
+            <div class="node-tech-tags">
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>JavaScript</span>
+              <span>UI Optimization</span>
+              <span>Cross-Browser Compatibility</span>
+              <span>Agile Collaboration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section scroll-reveal">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="sub-title">Project Portfolios</span>
+        <h2 class="section-title">Featured Applications</h2>
+      </div>
+      
+      <div class="projects-grid">
+        
+        <!-- Project 1: ExploreX -->
+        <div class="project-card glow-hover stagger-fade" style="--stagger: 0">
+          <div class="project-img-display">
+            <img src="explorex.png" alt="ExploreX Mockup" class="project-card-image">
+            <span class="proj-badge">Full Stack</span>
+          </div>
+          <div class="project-info">
+            <h3 class="project-name">ExploreX <a href="https://github.com/dhanaraj99/ISE_9-ExploreX-Travel-website" target="_blank" class="redirect-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a></h3>
+            <p class="project-desc">
+              A comprehensive travel and tourism platform integrating flight bookings, hotel reservations, and local event ticketing with responsive controls.
+            </p>
+            <div class="project-roles">
+              <span><strong>Key Work:</strong> Built multi-role user logic (Travelers, Vendors, Admins) and high-performance checkout security.</span>
+            </div>
+            <div class="project-tags">
+              <span>React.js</span>
+              <span>Node.js</span>
+              <span>Express</span>
+              <span>MongoDB</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/dhanaraj99/ISE_9-ExploreX-Travel-website" target="_blank" class="proj-link-btn outline-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Code Repository
+              </a>
+              <button onclick="openDemoModal('explorex')" class="proj-link-btn primary-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Run Booking Simulator
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: SyncLearn -->
+        <div class="project-card glow-hover stagger-fade" style="--stagger: 1">
+          <div class="project-img-display">
+            <img src="synclearn.png" alt="SyncLearn Mockup" class="project-card-image">
+            <span class="proj-badge">Full Stack Java</span>
+          </div>
+          <div class="project-info">
+            <h3 class="project-name">SyncLearn <a href="https://github.com/dhanaraj99/SyncLearn_Gamified_learning_platform" target="_blank" class="redirect-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a></h3>
+            <p class="project-desc">
+              A gamified e-learning platform designed to enhance student engagement through interactive quizzes, educational videos, and live progress trackers.
+            </p>
+            <div class="project-roles">
+              <span><strong>Key Work:</strong> Developed role-based learning portals, analytics dashboards, and integrated Spring Security modules.</span>
+            </div>
+            <div class="project-tags">
+              <span>Java</span>
+              <span>Spring Boot</span>
+              <span>MySQL</span>
+              <span>Thymeleaf</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/dhanaraj99/SyncLearn_Gamified_learning_platform" target="_blank" class="proj-link-btn outline-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Code Repository
+              </a>
+              <button onclick="openDemoModal('synclearn')" class="proj-link-btn primary-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Play DSA Quiz
+              </button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills -->
+  <section id="skills" class="skills-section scroll-reveal">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="sub-title">Technical Capabilities</span>
+        <h2 class="section-title">Visual Skill HUD</h2>
+      </div>
+      
+      <div class="skills-layout">
+        
+        <!-- Skill Card 1: Backend & Core -->
+        <div class="skills-card glow-hover stagger-fade" style="--stagger: 0">
+          <h3 class="skills-card-title">Backend & Core</h3>
+          <div class="skills-dial-grid">
+            <div class="skill-dial-item">
+              <div class="dial-svg-wrapper">
+                <svg class="dial-svg" viewBox="0 0 36 36">
+                  <path class="dial-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="dial-fill" stroke-dasharray="90, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <!-- Java Cup SVG Icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dial-icon"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+              </div>
+              <span class="dial-label">Java / OOPs</span>
+            </div>
+            
+            <div class="skill-dial-item">
+              <div class="dial-svg-wrapper">
+                <svg class="dial-svg" viewBox="0 0 36 36">
+                  <path class="dial-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="dial-fill" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <!-- Spring Leaf SVG Icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dial-icon"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 8a7 7 0 0 1-14 3"></path><path d="M19 2c-2.26 4.33-5.27 7.14-8 10"></path></svg>
+              </div>
+              <span class="dial-label">Spring Boot</span>
+            </div>
+          </div>
+          <div class="skills-tag-list" style="margin-top: 15px;">
+            <span>API Design</span>
+            <span>MVC Patterns</span>
+            <span>REST API</span>
+          </div>
+        </div>
+
+        <!-- Skill Card 2: Frontend & Web -->
+        <div class="skills-card glow-hover stagger-fade" style="--stagger: 1">
+          <h3 class="skills-card-title">Frontend & Web</h3>
+          <div class="skills-dial-grid">
+            <div class="skill-dial-item">
+              <div class="dial-svg-wrapper">
+                <svg class="dial-svg" viewBox="0 0 36 36">
+                  <path class="dial-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="dial-fill" stroke-dasharray="88, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <!-- React Atom SVG Icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dial-icon"><ellipse cx="12" cy="12" rx="5" ry="11" transform="rotate(30 12 12)"></ellipse><ellipse cx="12" cy="12" rx="5" ry="11" transform="rotate(90 12 12)"></ellipse><ellipse cx="12" cy="12" rx="5" ry="11" transform="rotate(150 12 12)"></ellipse><circle cx="12" cy="12" r="1"></circle></svg>
+              </div>
+              <span class="dial-label">React.js</span>
+            </div>
+            
+            <div class="skill-dial-item">
+              <div class="dial-svg-wrapper">
+                <svg class="dial-svg" viewBox="0 0 36 36">
+                  <path class="dial-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="dial-fill" stroke-dasharray="92, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <!-- JS Brackets SVG Icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dial-icon"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <span class="dial-label">JS / HTML / CSS</span>
+            </div>
+          </div>
+          <div class="skills-tag-list" style="margin-top: 15px;">
+            <span>Responsive layouts</span>
+            <span>Flexbox / Grid</span>
+            <span>DOM manipulation</span>
+          </div>
+        </div>
+
+        <!-- Skill Card 3: Databases & Tools -->
+        <div class="skills-card glow-hover stagger-fade" style="--stagger: 2">
+          <h3 class="skills-card-title">Databases & Tools</h3>
+          <div class="skills-dial-grid">
+            <div class="skill-dial-item">
+              <div class="dial-svg-wrapper">
+                <svg class="dial-svg" viewBox="0 0 36 36">
+                  <path class="dial-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="dial-fill" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <!-- Database Server SVG Icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dial-icon"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+              </div>
+              <span class="dial-label">SQL / MongoDB</span>
+            </div>
+            
+            <div class="skill-dial-item">
+              <div class="dial-svg-wrapper">
+                <svg class="dial-svg" viewBox="0 0 36 36">
+                  <path class="dial-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="dial-fill" stroke-dasharray="80, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <!-- Git Branch SVG Icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dial-icon"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+              </div>
+              <span class="dial-label">Git / Docker</span>
+            </div>
+          </div>
+          <div class="skills-tag-list" style="margin-top: 15px;">
+            <span>GitHub Actions</span>
+            <span>Vercel Deploy</span>
+            <span>VS Code settings</span>
+          </div>
+        </div>
+
+      </div>
+      
+        <div class="soft-skills-strip glow-hover">
+          <h3>Workflow & Soft Skills:</h3>
+          <div class="soft-tags">
+            <span>Team Collaboration</span>
+            <span>Rapid Debugging</span>
+            <span>Time Management</span>
+            <span>Clear Communication</span>
+            <span>Quick Learner</span>
+          </div>
+        </div>
+
+        <div class="languages-box glow-hover">
+          <h3>Languages Spoken:</h3>
+          <div class="langs-grid">
+            <div class="lang-tag"><span>Kannada</span> <span class="lbl-native">Native</span></div>
+            <div class="lang-tag"><span>English</span> <span class="lbl-fluent">Fluent</span></div>
+            <div class="lang-tag"><span>Hindi</span> <span class="lbl-fluent">Fluent</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications-section scroll-reveal">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="sub-title">Endorsements</span>
+          <h2 class="section-title">Credentials & Certifications</h2>
+        </div>
+        
+        <div class="certs-grid">
+          
+          <div class="cert-card glow-hover stagger-fade" style="--stagger: 0">
+            <div class="cert-icon">🏆</div>
+            <h4>Java Problem Solving</h4>
+            <p class="cert-issuer">CodeChef</p>
+            <a href="https://drive.google.com/file/d/1pBAdECjCDBRTQfOFu_O_u9IqLS95WO2A/view?usp=sharing" target="_blank" class="cert-link">Verify Credentials <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+          </div>
+  
+          <div class="cert-card glow-hover stagger-fade" style="--stagger: 1">
+            <div class="cert-icon">💻</div>
+            <h4>DSA using Java</h4>
+            <p class="cert-issuer">CodeChef</p>
+            <a href="https://drive.google.com/file/d/1Qhz5oYK2IOFgpHY04MZm0dTl-jrr-aCa/view?usp=sharing" target="_blank" class="cert-link">Verify Credentials <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+          </div>
+  
+          <div class="cert-card glow-hover stagger-fade" style="--stagger: 2">
+            <div class="cert-icon">📊</div>
+            <h4>SQL & Relational Databases</h4>
+            <p class="cert-issuer">IBM Developer Skills Network</p>
+            <a href="https://drive.google.com/file/d/145h4oeeiZ1IzUzjhj0J6coBSYGAFOiNE/view?usp=sharing" target="_blank" class="cert-link">Verify Credentials <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section scroll-reveal">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="sub-title">Get In Touch</span>
+        <h2 class="section-title">Contact Me</h2>
+        <p class="contact-lead-text">
+          Have an opportunity or want to build a project together? Drop me a message directly.
+        </p>
+      </div>
+      
+      <div class="contact-layout">
+        
+        <div class="contact-sidebar-info stagger-fade" style="--stagger: 0">
+          <div class="info-item glow-hover">
+            <div class="info-icon">📧</div>
+            <div class="info-content">
+              <h5>Email Address</h5>
+              <a href="mailto:dhanarajdhammure99@gmail.com">dhanarajdhammure99@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="info-item glow-hover">
+            <div class="info-icon">📞</div>
+            <div class="info-content">
+              <h5>Call Me</h5>
+              <a href="tel:+917892739895">+91 7892739895</a>
+            </div>
+          </div>
+
+          <div class="info-item glow-hover">
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+              <h5>Current Location</h5>
+              <span>Bengaluru, Karnataka - 560064</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form-wrapper glow-hover stagger-fade" style="--stagger: 1">
+          <form id="portfolio-contact-form" class="contact-form" onsubmit="handleContactSubmit(event)">
+            <!-- FormSubmit configuration -->
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Project Discussion" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Write your message details..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit">
+              Send Message
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+            <div id="contact-success-msg" class="success-alert" style="display: none;">
+              ✅ Message sent successfully! I will respond to your email shortly.
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-area">
+    <div class="section-container footer-content-wrapper">
+      
+      <!-- Top: Social Links in Circular Bubbles -->
+      <div class="footer-social-row">
+        <a href="https://github.com/dhanaraj99" target="_blank" class="footer-social-bubble">
+          <div class="bubble-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </div>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/dhanaraj-dhammure/" target="_blank" class="footer-social-bubble">
+          <div class="bubble-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </div>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://www.instagram.com/dhanaraj_0?igsh=dnR0Nm43ZzFuZGlm" target="_blank" class="footer-social-bubble">
+          <div class="bubble-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </div>
+          <span>Instagram</span>
+        </a>
+      </div>
+
+      <!-- Middle: Centered Description -->
+      <div class="footer-desc-row">
+        <p>Full Stack Developer specializing in Java, Spring Boot, React.js, and modern web technologies.</p>
+      </div>
+
+      <!-- Bottom: Contact Info Row -->
+      <div class="footer-info-row">
+        <div class="footer-info-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <a href="mailto:dhanarajdhammure99@gmail.com">dhanarajdhammure99@gmail.com</a>
+        </div>
+        <div class="footer-info-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <a href="tel:+917892739895">+91 7892739895</a>
+        </div>
+        <div class="footer-info-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>Bengaluru, Karnataka - 560064</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-copyright">
+      <p>&copy; 2026 Dhanaraj D. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Project Demo Interactive Simulator Modal -->
+  <div class="modal-backdrop" id="demo-modal">
+    <div class="demo-modal-container">
+      <div class="demo-modal-header">
+        <h3 id="modal-project-title">Interactive Project Runtime</h3>
+        <button onclick="closeDemoModal()" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="demo-modal-body" id="modal-demo-content">
+        <!-- Interactive content generated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Resume Viewer Modal -->
+  <div class="modal-backdrop" id="resume-modal">
+    <div class="resume-modal-container">
+      <div class="resume-modal-header">
+        <h3>Resume Preview</h3>
+        <div class="resume-modal-actions">
+          <a href="resume.pdf" download="Dhanaraj_D_Resume.pdf" class="btn btn-primary" style="padding: 6px 12px; font-size: 12px; text-decoration: none;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download Resume
+          </a>
+          <button onclick="closeResumeModal()" class="modal-close-btn">&times;</button>
+        </div>
+      </div>
+      <div class="resume-iframe-wrapper">
+        <iframe src="resume.pdf#toolbar=0" id="resume-frame" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js?v=2.9.0"></script>
+</body>
+</html>
